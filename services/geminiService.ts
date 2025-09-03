@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 import type { ImageState, TryOnResult } from '../types';
 
@@ -14,7 +13,7 @@ export const generateVirtualTryOn = async (
   outfitImage: ImageState
 ): Promise<TryOnResult> => {
   try {
-    const prompt = `Analyze the person in the first image and the clothing in the second image. Generate a new image showing the person from the first image wearing the outfit from the second image. The person's pose, face, and the background should be preserved from the first image. Do not include any text overlay on the generated image.`;
+    const prompt = `You are an expert at virtual try-on. Your task is to take the person from the first image and dress them in the outfit from the second image. Generate a new image where the person's pose, face, and the background are preserved exactly as they are in the first image, but their clothes are replaced with the outfit from the second image. The result should be a realistic image of the person wearing the new outfit. Do not include any text overlay on the generated image.`;
 
     const response = await ai.models.generateContent({
       model: model,
